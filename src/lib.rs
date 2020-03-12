@@ -48,6 +48,18 @@ impl From<&BigInt> for Cents {
     }
 }
 
+impl From<&Cents> for BigInt {
+    fn from(cents: &Cents) -> BigInt {
+        cents.value.into()
+    }
+}
+
+impl From<Cents> for BigInt {
+    fn from(cents: Cents) -> BigInt {
+        cents.value.into()
+    }
+}
+
 impl Add for Cents {
     type Output = Self;
 
@@ -137,6 +149,7 @@ impl Sub for Cents {
 #[cfg(test)]
 mod test {
     use super::Cents;
+    use num::bigint::BigInt;
 
     #[test]
     fn test_add_to_u64() {
@@ -159,5 +172,17 @@ mod test {
     #[test]
     fn test_one_cent_should_equal_one() {
         assert_eq!(Cents::new(0, 1), 1.into());
+    }
+
+    #[test]
+    fn test_from_big_int() {
+        let forty_two: Cents = BigInt::from(42).into();
+        assert_eq!(forty_two, Cents::new(0, 42));
+    }
+
+    #[test]
+    fn test_to_big_int() {
+        let forty_two: BigInt = Cents::new(0, 42).into();
+        assert_eq!(forty_two, BigInt::from(42));
     }
 }
