@@ -155,4 +155,9 @@ mod test {
     fn test_add_two_cents() {
         assert_eq!(Cents::from(2121) + Cents::from(2121), Cents::new(42, 42));
     }
+
+    #[test]
+    fn test_one_cent_should_equal_one() {
+        assert_eq!(Cents::new(0, 1), 1.into());
+    }
 }
