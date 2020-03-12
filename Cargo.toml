@@ -1,6 +1,6 @@
 [package]
 name = "cents"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Nathan A Sculli <nathan@vegasbuckeye.com>"]
 description = "A small crate for handling monetary values as in integer number of cents."
 homepage = "https://gitlab.com/buckeye/cents"
